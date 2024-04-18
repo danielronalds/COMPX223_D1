@@ -229,3 +229,8 @@ values ('2021-06-30', 'Little bit worse than last year', 'XYZ1234', 0);
 
 insert into maintenance_record(date, notes, serial_number, staff_id)
 values ('2020-06-30', 'Good as new essentially', 'XYZ1234', 0);
+
+select tool_type.name as 'Tool Maintained', maintenance_record.serial_number as 'Serial Number', maintenance_record.date as 'Date of Maintence', firstname as 'Staff First Name', lastname as 'Staff Last Name', branch.name as 'Branch'
+from maintenance_record, staff, branch, tool, tool_type
+where tool.serial_number = 'XYZ1234' 
+AND maintenance_record.staff_id = staff.staff_id AND branch.branch_id = staff.branch_id AND tool.tool_type_id = tool_type.tool_type_id
